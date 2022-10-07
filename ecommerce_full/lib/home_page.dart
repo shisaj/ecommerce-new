@@ -26,9 +26,9 @@ class MyHomePage extends StatelessWidget {
                         color: Appcolors.mainColor,
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 15),
+                        margin: const EdgeInsets.only(left: 15),
                         child: Row(
-                          children: [
+                          children: const [
                             SmallText(
                               text: 'kannur',
                               size: 10,
@@ -57,7 +57,7 @@ class MyHomePage extends StatelessWidget {
                 ],
               ),
             ),
-            FoodPageBody()
+            const FoodPageBody()
           ],
         ),
       ),
