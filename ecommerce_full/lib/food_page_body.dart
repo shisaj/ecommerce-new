@@ -52,7 +52,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     if (index == currentPageValue.floor()) {
       var currentScaleValue =
           1 - (currentPageValue - index) * (1 - scaleFactor);
-      ;
+
       var currTrans = height * (1 - currentScaleValue) / 2;
       matrix = Matrix4.diagonal3Values(1, currentScaleValue, 1)
         ..setTranslationRaw(0, currTrans, 0);
@@ -63,7 +63,19 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       matrix = Matrix4.diagonal3Values(1, currentScaleValue, 1);
       matrix = Matrix4.diagonal3Values(1, currentScaleValue, 1)
         ..setTranslationRaw(0, currTrans, 0);
+    } else if (index == currentPageValue.floor() - 1) {
+      var currentScaleValue =
+          1 - (currentPageValue - index) * (1 - scaleFactor);
+      var currTrans = height * (1 - currentScaleValue) / 2;
+      matrix = Matrix4.diagonal3Values(1, currentScaleValue, 1);
+      matrix = Matrix4.diagonal3Values(1, currentScaleValue, 1)
+        ..setTranslationRaw(0, currTrans, 0);
+    } else {
+      var currentScaleValue = 0.8;
+      matrix = Matrix4.diagonal3Values(1, currentScaleValue, 1)
+        ..setTranslationRaw(0, height * (1 - currentScaleValue) / 2, 0);
     }
+
     return Transform(
       transform: matrix,
       child: Stack(children: [
@@ -72,7 +84,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           margin: const EdgeInsets.only(left: 10, right: 10, top: 5),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: index.isEven ? Color(0xFF69c5DF) : const Color(0xFF9294cc),
+              color: index.isEven
+                  ? const Color(0xFF69c5DF)
+                  : const Color(0xFF9294cc),
               image: const DecorationImage(
                   image: AssetImage('assets/images/jewel.jpg'),
                   fit: BoxFit.cover)),
@@ -81,11 +95,26 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           alignment: Alignment.bottomCenter,
           child: Container(
             height: 100,
-            margin: const EdgeInsets.only(left: 20, right: 20, bottom: 15),
+            margin: const EdgeInsets.only(left: 25, right: 25, bottom: 15),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Colors.white,
-            ),
+                borderRadius: BorderRadius.circular(15),
+                color: Colors.white,
+                boxShadow: const [
+                  BoxShadow(
+                    color: Color(0xFFe8e8e8),
+                    offset: Offset(0, 8),
+                    blurRadius: 5.0,
+                    blurStyle: BlurStyle.inner,
+                  ),
+                  BoxShadow(
+                    color: Colors.white,
+                    offset: Offset(-5, 0),
+                  ),
+                  BoxShadow(
+                    color: Colors.white,
+                    offset: Offset(5, 0),
+                  )
+                ]),
             child: Container(
               margin: const EdgeInsets.only(
                   left: 20, right: 20, top: 10, bottom: 10),
