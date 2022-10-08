@@ -12,9 +12,9 @@ class FoodPageBody extends StatefulWidget {
 
 class _FoodPageBodyState extends State<FoodPageBody> {
   PageController pageController = PageController(viewportFraction: 0.85);
-  var currentPageValue;
+  var currentPageValue = 0.0;
   double scaleFactor = 0.8;
-  var currentScaleValue;
+  double height = 180;
 
   @override
   void initState() {
@@ -22,15 +22,14 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     super.initState();
     pageController.addListener(() {
       setState(() {
-        currentPageValue = pageController.page;
+        currentPageValue = pageController.page!;
       });
     });
   }
 
   @override
+  // ignore: must_call_super
   void dispose() {
-    // TODO: implement dispose
-    super.dispose();
     pageController.dispose();
   }
 
@@ -51,12 +50,19 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     Matrix4 matrix = Matrix4.identity();
 
     if (index == currentPageValue.floor()) {
-      currentScaleValue = 1 - (currentPageValue - index) * (1 - scaleFactor);
-      matrix = Matrix4.diagonal3Values(1, currentScaleValue, 1);
-    } else if (index == currentPageValue - index + 1) {
-      currentScaleValue =
+      var currentScaleValue =
+          1 - (currentPageValue - index) * (1 - scaleFactor);
+      ;
+      var currTrans = height * (1 - currentScaleValue) / 2;
+      matrix = Matrix4.diagonal3Values(1, currentScaleValue, 1)
+        ..setTranslationRaw(0, currTrans, 0);
+    } else if (index == currentPageValue.floor() + 1) {
+      var currentScaleValue =
           scaleFactor + (currentPageValue - index + 1) * (1 - scaleFactor);
+      var currTrans = height * (1 - currentScaleValue) / 2;
       matrix = Matrix4.diagonal3Values(1, currentScaleValue, 1);
+      matrix = Matrix4.diagonal3Values(1, currentScaleValue, 1)
+        ..setTranslationRaw(0, currTrans, 0);
     }
     return Transform(
       transform: matrix,
