@@ -12,25 +12,22 @@ class FoodPageBody extends StatefulWidget {
 
 class _FoodPageBodyState extends State<FoodPageBody> {
   PageController pageController = PageController(viewportFraction: 0.85);
-  var currentPageValue;
-  double scaleFactor = 0.8;
-  var currentScaleValue;
 
+  var currPageValue = 0.0;
+  double scaleFactor = 0.8;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     pageController.addListener(() {
       setState(() {
-        currentPageValue = pageController.page;
+        currPageValue = pageController.page!;
       });
     });
   }
 
   @override
+  // ignore: must_call_super
   void dispose() {
-    // TODO: implement dispose
-    super.dispose();
     pageController.dispose();
   }
 
@@ -39,7 +36,6 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     return Container(
       height: 250,
       child: PageView.builder(
-          controller: pageController,
           itemCount: 5,
           itemBuilder: (context, position) {
             return buildPageItem(position);
@@ -48,25 +44,28 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   }
 
   Widget buildPageItem(int index) {
-    Matrix4 matrix = Matrix4.identity();
+    Matrix4 matrix4 = Matrix4.identity();
 
-    if (index == currentPageValue.floor()) {
-      currentScaleValue = 1 - (currentPageValue - index) * (1 - scaleFactor);
-      matrix = Matrix4.diagonal3Values(1, currentScaleValue, 1);
-    } else if (index == currentPageValue - index + 1) {
-      currentScaleValue =
-          scaleFactor + (currentPageValue - index + 1) * (1 - scaleFactor);
-      matrix = Matrix4.diagonal3Values(1, currentScaleValue, 1);
+    if (index == currPageValue.floor()) {
+      var currScale = 1 - (currPageValue - index) * (1 - scaleFactor);
+      matrix4 = Matrix4.diagonal3Values(1, currScale, 1);
+    } else if (index == currPageValue.floor() + 1) {
+      var currScale =
+          scaleFactor + (currPageValue - index + 1) * (1 - scaleFactor);
+      matrix4 = Matrix4.diagonal3Values(1, currScale, 1);
     }
+
     return Transform(
-      transform: matrix,
+      transform: matrix4,
       child: Stack(children: [
         Container(
           height: 180,
           margin: const EdgeInsets.only(left: 10, right: 10, top: 5),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: index.isEven ? Color(0xFF69c5DF) : const Color(0xFF9294cc),
+              color: index.isEven
+                  ? const Color(0xFF69c5DF)
+                  : const Color(0xFF9294cc),
               image: const DecorationImage(
                   image: AssetImage('assets/images/jewel.jpg'),
                   fit: BoxFit.cover)),
@@ -104,15 +103,15 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                       const SizedBox(
                         width: 10,
                       ),
-                      SmallText(text: '4.5'),
+                      const SmallText(text: '4.5'),
                       const SizedBox(
                         width: 10,
                       ),
-                      SmallText(text: '1287'),
+                      const SmallText(text: '1287'),
                       const SizedBox(
                         width: 5,
                       ),
-                      SmallText(text: 'comments'),
+                      const SmallText(text: 'comments'),
                     ],
                   ),
                   const SizedBox(
