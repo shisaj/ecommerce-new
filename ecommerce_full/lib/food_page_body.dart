@@ -1,3 +1,4 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:ecommerce_full/app_fonts.dart';
 import 'package:ecommerce_full/icon_text_widget.dart';
 import 'package:ecommerce_full/smallText.dart';
@@ -35,14 +36,30 @@ class _FoodPageBodyState extends State<FoodPageBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 250,
-      child: PageView.builder(
-          controller: pageController,
-          itemCount: 5,
-          itemBuilder: (context, position) {
-            return buildPageItem(position);
-          }),
+    return Column(
+      children: [
+        Container(
+          height: 250,
+          child: PageView.builder(
+              controller: pageController,
+              itemCount: 5,
+              itemBuilder: (context, position) {
+                return buildPageItem(position);
+              }),
+        ),
+        DotsIndicator(
+          dotsCount: 5,
+          position: currentPageValue,
+          decorator: DotsDecorator(
+            color: Appcolors.mainColor,
+            activeColor: Appcolors.iconColor2,
+            size: const Size.square(8.0),
+            activeSize: const Size(18.0, 9.0),
+            activeShape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.0)),
+          ),
+        ),
+      ],
     );
   }
 
@@ -154,21 +171,16 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     height: 20,
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       IconTextWidget(
                           icon: Icons.circle,
                           text: 'Normal',
                           iconColor: Appcolors.iconColor1),
-                      const SizedBox(
-                        width: 25,
-                      ),
                       IconTextWidget(
                           icon: Icons.location_on,
                           text: '1.7km',
                           iconColor: Appcolors.mainColor),
-                      const SizedBox(
-                        width: 25,
-                      ),
                       IconTextWidget(
                           icon: Icons.access_time,
                           text: '1.7km',
