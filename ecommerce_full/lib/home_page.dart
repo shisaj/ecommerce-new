@@ -3,6 +3,7 @@ import 'package:ecommerce_full/bigtext.dart';
 import 'package:ecommerce_full/food_page_body.dart';
 import 'package:ecommerce_full/smallText.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class MyHomePage extends StatelessWidget {
         body: Column(
           children: [
             Container(
-              padding: const EdgeInsets.all(20),
+              padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 20.w),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -26,16 +27,16 @@ class MyHomePage extends StatelessWidget {
                         color: Appcolors.mainColor,
                       ),
                       Container(
-                        margin: const EdgeInsets.only(left: 15),
+                        margin: EdgeInsets.only(left: 15.w),
                         child: Row(
-                          children: const [
+                          children: [
                             SmallText(
                               text: 'kannur',
-                              size: 10,
+                              size: 10.sp,
                             ),
                             Icon(
                               Icons.arrow_drop_down,
-                              size: 20,
+                              size: 20.sp,
                             )
                           ],
                         ),
@@ -43,15 +44,15 @@ class MyHomePage extends StatelessWidget {
                     ],
                   ),
                   Container(
-                    height: 30,
-                    width: 30,
+                    height: 30.h,
+                    width: 30.w,
                     decoration: BoxDecoration(
                         color: Appcolors.mainColor,
-                        borderRadius: BorderRadiusDirectional.circular(10)),
-                    child: const Icon(
+                        borderRadius: BorderRadiusDirectional.circular(10.r)),
+                    child: Icon(
                       Icons.search,
                       color: Colors.white,
-                      size: 15,
+                      size: 15.sp,
                     ),
                   )
                 ],
