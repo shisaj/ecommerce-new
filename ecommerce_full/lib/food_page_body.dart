@@ -1,5 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:ecommerce_full/app_fonts.dart';
+import 'package:ecommerce_full/bigtext.dart';
 import 'package:ecommerce_full/icon_text_widget.dart';
 import 'package:ecommerce_full/smallText.dart';
 import 'package:flutter/material.dart';
@@ -60,9 +61,40 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 borderRadius: BorderRadius.circular(5.0.r)),
           ),
         ),
+        SizedBox(
+          height: 20.h,
+        ),
+        Container(
+          margin: const EdgeInsets.only(left: 30),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              const BigText(text: 'Popular'),
+              SizedBox(
+                width: 8.w,
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 3),
+                child: BigText(
+                  text: '.',
+                  color: Appcolors.paraColor,
+                ),
+              ),
+              SizedBox(
+                width: 8.w,
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 2),
+                child: SmallText(text: 'Food pairing'),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }
+
+  // page builder function
 
   Widget buildPageItem(int index) {
     Matrix4 matrix = Matrix4.identity();
