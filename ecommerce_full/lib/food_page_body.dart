@@ -84,11 +84,83 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 width: 8.w,
               ),
               Container(
-                margin: EdgeInsets.only(bottom: 2),
-                child: SmallText(text: 'Food pairing'),
+                margin: const EdgeInsets.only(bottom: 2),
+                child: const SmallText(text: 'Food pairing'),
               ),
             ],
           ),
+        ),
+        //images and details
+        Container(
+          margin: EdgeInsets.only(top: 25),
+          child: ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return Container(
+                  margin: EdgeInsets.only(left: 30, right: 30, bottom: 8),
+                  child: Row(
+                    children: [
+                      Container(
+                        //image container
+                        decoration: BoxDecoration(
+                            image: const DecorationImage(
+                                image: AssetImage('assets/images/jewel1.jpg'),
+                                fit: BoxFit.cover),
+                            borderRadius: BorderRadius.circular(10.r),
+                            color: Colors.grey.shade300),
+                        height: 120.h,
+                        width: 120.w,
+                      ),
+                      Expanded(
+                        child: Container(
+                          height: 100.h,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(10.r),
+                                  bottomRight: Radius.circular(10.r)),
+                              color: Colors.white),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 15),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                BigText(
+                                    text: 'bangles for ladies and children'),
+                                SmallText(
+                                  text: 'import from calcutta',
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    IconTextWidget(
+                                        icon: Icons.circle,
+                                        text: 'Normal',
+                                        iconColor: Appcolors.iconColor1),
+                                    IconTextWidget(
+                                        icon: Icons.location_on,
+                                        text: '1.7km',
+                                        iconColor: Appcolors.mainColor),
+                                    IconTextWidget(
+                                        icon: Icons.access_time,
+                                        text: '1.7km',
+                                        iconColor: Appcolors.iconColor2),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      )
+                      //details of images
+                    ],
+                  ),
+                );
+              }),
         ),
       ],
     );
