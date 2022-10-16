@@ -1,4 +1,5 @@
 import 'package:ecommerce_full/home_page.dart';
+import 'package:ecommerce_full/pages/food_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const MyHomePage(),
+        home: const FoodDetails(),
       ),
       designSize: const Size(360, 640),
     );

@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:ecommerce_full/app_fonts.dart';
 import 'package:ecommerce_full/bigtext.dart';
 import 'package:ecommerce_full/icon_text_widget.dart';
+import 'package:ecommerce_full/item_detail_column.dart';
 import 'package:ecommerce_full/smallText.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -216,86 +217,31 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            height: 100.h,
-            margin: EdgeInsets.only(left: 25.w, right: 25.w, bottom: 15.h),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15.r),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color(0xFFe8e8e8),
-                    offset: Offset(0, 8.r),
-                    blurRadius: 5.0.r,
-                    blurStyle: BlurStyle.inner,
-                  ),
-                  BoxShadow(
-                    color: Colors.white,
-                    offset: Offset(-5.r, 0.r),
-                  ),
-                  BoxShadow(
-                    color: Colors.white,
-                    offset: Offset(5.r, 0.r),
-                  )
-                ]),
-            child: Container(
-              margin: EdgeInsets.only(
-                  left: 20.w, right: 20.w, top: 10.h, bottom: 10.h),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text('Bangles'),
-                  SizedBox(
-                    height: 5.h,
-                  ),
-                  Row(
-                    children: [
-                      Wrap(
-                        children: List.generate(5, (index) {
-                          return Icon(
-                            Icons.star,
-                            color: Appcolors.mainColor,
-                            size: 15.sp,
-                          );
-                        }),
-                      ),
-                      SizedBox(
-                        width: 10.w,
-                      ),
-                      SmallText(text: '4.5'),
-                      SizedBox(
-                        width: 10.w,
-                      ),
-                      SmallText(text: '1287'),
-                      SizedBox(
-                        width: 5.w,
-                      ),
-                      SmallText(text: 'comments'),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconTextWidget(
-                          icon: Icons.circle,
-                          text: 'Normal',
-                          iconColor: Appcolors.iconColor1),
-                      IconTextWidget(
-                          icon: Icons.location_on,
-                          text: '1.7km',
-                          iconColor: Appcolors.mainColor),
-                      IconTextWidget(
-                          icon: Icons.access_time,
-                          text: '1.7km',
-                          iconColor: Appcolors.iconColor2),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
+              height: 100.h,
+              margin: EdgeInsets.only(left: 25.w, right: 25.w, bottom: 15.h),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15.r),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFFe8e8e8),
+                      offset: Offset(0, 8.r),
+                      blurRadius: 5.0.r,
+                      blurStyle: BlurStyle.inner,
+                    ),
+                    BoxShadow(
+                      color: Colors.white,
+                      offset: Offset(-5.r, 0.r),
+                    ),
+                    BoxShadow(
+                      color: Colors.white,
+                      offset: Offset(5.r, 0.r),
+                    )
+                  ]),
+              child: ItemDetailColumn(
+                itemName: 'Bangles',
+                fontSize: 15,
+              )),
         ),
       ]),
     );
