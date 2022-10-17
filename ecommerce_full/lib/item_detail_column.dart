@@ -70,16 +70,6 @@ class ItemDetailColumn extends StatelessWidget {
                   iconColor: Appcolors.iconColor2),
             ],
           ),
-          SizedBox(
-            height: 20.h,
-          ),
-          BigText(text: 'Details'),
-          SizedBox(
-            height: 10.h,
-          ),
-          SmallText(
-              text:
-                  'hjjgljafg jlkjlkajg jgj \njjfgagjajg jjhvaj \njfoiauegjajgaj')
         ],
       ),
     );

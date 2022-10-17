@@ -5,6 +5,7 @@ import 'package:ecommerce_full/item_detail_column.dart';
 import 'package:ecommerce_full/smallText.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:expandable_text/expandable_text.dart';
 
 class FoodDetails extends StatelessWidget {
   const FoodDetails({Key? key}) : super(key: key);
@@ -64,6 +65,37 @@ class FoodDetails extends StatelessWidget {
                     itemName: 'Bangles',
                     fontSize: 20.sp,
                   ),
+                  SizedBox(height: 10.h),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: BigText(
+                      text: 'Details',
+                      size: 15.sp,
+                    ),
+                  ),
+                  SizedBox(height: 10.h),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20, right: 20),
+                        child: ExpandableText(
+                          'love hdkjhfkhfgh hkhkhg jjjgaawiohgajjjiufhahgahgiagfhjhgiuhyiuyhiuhyasdfghiiuygfjhjhfghjkhh hdkjhfkhfgh hkhkhg jjjgaawiohgajjjiufhahgahgiagfhjhgiuhyiuyhiuhyasdfghiiuygfjhjhfghjkhh hdkjhfkhfgh hkhkhg jjjgaawiohgajjjiufhahgahgiagfhjhgiuhyiuyhiuhyasdfghiiuygfjhjhfghjkhh hdkjhfkhfgh hkhkhg jjjgaawiohgajjjiufhahgahgiagfhjhgiuhyiuyhiuhyasdfghiiuygfjhjhfghjkhh hdkjhfkhfgh hkhkhg jjjgaawiohgajjjiufhahgahgiagfhjhgiuhyiuyhiuhyasdfghiiuygfjhjhfghjkhh',
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: Appcolors.mainBlackColor,
+                            height: 1.5,
+                          ),
+                          expandText: '\n \nshow more',
+                          collapseText: '\n \nshow less',
+                          maxLines: 3,
+                          linkColor: Appcolors.mainColor,
+                          linkEllipsis: false,
+                          linkStyle: TextStyle(fontSize: 12),
+                          animation: true,
+                        ),
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),
@@ -113,7 +145,7 @@ class FoodDetails extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10)),
               child: BigText(
                 text: "\$ | add to cart",
-                size: 15,
+                size: 15.sp,
                 color: Colors.white,
               ),
             ),
