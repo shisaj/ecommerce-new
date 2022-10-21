@@ -1,5 +1,4 @@
 import 'package:ecommerce_full/app_fonts.dart';
-import 'package:ecommerce_full/bigtext.dart';
 import 'package:ecommerce_full/icon_text_widget.dart';
 import 'package:ecommerce_full/smallText.dart';
 import 'package:flutter/material.dart';
